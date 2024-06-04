@@ -30,6 +30,14 @@ commands are now available:
 * `set_char(c, i)`
     * Removes all words in `WORDS` that don't have character `c` at index `i` (1-based index, i.e. characters are at positions 1, 2, 3, 4, 5).
       All words that do not match this pattern will be removed from `WORDS`
+* `set_chars(s, **kwargs)`
+    * Takes a string and sets each character. It is required to use `'*'` in locations where you are not setting characters.
+      In other words, `'g*o**'` calls `set_char('g', 1)` and `set_char('o', 3)`.
+      An optional keyword argument can be passed for setting yellow characters. If you have a string of known characters, yellow
+      indices can be added with the argument `yellow=[x1, ...]`. Each index (again, 1-based) indicates that the character in `s` at
+      that position is yellow, and calls the `set_yellow(s[i-1], i)` function.
+* `set_yellow(c, i)`
+    * Removes all words that don't have `c` and all words that have `c` in position `i` from `WORDS`
 * `pwords()`
     * Prints all words in `WORDS`
  

@@ -11,8 +11,9 @@ def load_file(f = 'words.txt'):
     make_word_scores()
 
 def remove_char(c):
-    global WORDS, TEMP_WORDS
+    global WORDS, TEMP_WORDS, WORD_SCORES
     for word in WORDS:
+        WORD_SCORES[word] = 0
         if word.count(c) == 0:
             TEMP_WORDS.append(word)
     WORDS = TEMP_WORDS.copy()
@@ -20,8 +21,9 @@ def remove_char(c):
     make_word_scores()
 
 def set_char(c, i):
-    global WORDS, TEMP_WORDS
+    global WORDS, TEMP_WORDS, WORD_SCORES
     for word in WORDS:
+        WORD_SCORES[word] = 0
         if word[i-1] == c:
             TEMP_WORDS.append(word)
     WORDS = TEMP_WORDS.copy()
